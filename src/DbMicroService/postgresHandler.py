@@ -1,10 +1,11 @@
 import pandas as pd
 import logging
 import psycopg2
-from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, func
 from sqlalchemy.orm import relationship, sessionmaker, declarative_base
 from src import consts
 from src.main import get_all_dfs
+from sqlalchemy.sql import text
 
 # Enable logging for SQL statements
 logging.basicConfig()
@@ -38,11 +39,16 @@ except Exception as e:
 
 Base = declarative_base()
 
-
 class DynamicBase(Base):
     __abstract__ = True
     id = Column(Integer, primary_key=True)
 
+class MainTable(Base):
+    __tablename__ = 'main_table'
+    id = Column(Integer, primary_key=True)
+    table_name = Column(String, unique=True)
+    record_count = Column(Integer)
+    average_price = Column(Float)
 
 def create_property_class(table_name):
     class PropertyData(DynamicBase):
@@ -63,12 +69,10 @@ def create_property_class(table_name):
 
     return PropertyData
 
-
 def create_renting_class(table_name, property_table_name):
     class RentingData(DynamicBase):
         __tablename__ = table_name
         __table_args__ = {'extend_existing': True}
-
         id = Column(Integer, primary_key=True)
         property_id = Column(Integer, ForeignKey(f'{property_table_name}.id'))
         # Relationship will be added later
@@ -80,19 +84,52 @@ def create_renting_class(table_name, property_table_name):
 
     return RentingData
 
-
 def create_relationships(property_class, renting_class):
     property_class.renting_data = relationship(renting_class, back_populates="property")
     renting_class.property = relationship(property_class, back_populates="renting_data")
 
+def compute_average_price(table_name):
+    # Check if the table is of the 'renting' type
+    if 'renting' in table_name:
+        with engine.connect() as conn:
+            result = conn.execute(text(f'SELECT AVG("realSum") FROM {table_name}'))
+            avg_price = result.scalar()
+        return avg_price
+    else:
+        # Return None or a default value for 'property' type tables
+        return None
 
-def create_all_tables(dfs):
+def update_main_table(table_name):
+    with engine.connect() as conn:
+        record_count_query = text(f"SELECT COUNT(*) FROM {table_name}")
+        record_count = conn.execute(record_count_query).scalar()
+        average_price = compute_average_price(table_name)
+
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        existing_record = session.query(MainTable).filter_by(table_name=table_name).first()
+        if existing_record:
+            existing_record.record_count = record_count
+            existing_record.average_price = average_price
+        else:
+            new_record = MainTable(table_name=table_name, record_count=record_count, average_price=average_price)
+            session.add(new_record)
+
+        session.commit()
+        session.close()
+
+
+def create_all_tables(dfs,firstTime=False):
     for name in dfs.keys():
         PropertyClass = create_property_class(f'property_{name}')
         RentingClass = create_renting_class(f'renting_{name}', f'property_{name}')
         create_relationships(PropertyClass, RentingClass)
-        Base.metadata.create_all(engine)
+    Base.metadata.create_all(engine)
 
+    for name in dfs.keys():
+        update_main_table(f'property_{name}')
+        update_main_table(f'renting_{name}')
 
 def insert_data(df, property_table_name, renting_table_name):
     PropertyData = create_property_class(property_table_name)
@@ -117,15 +154,13 @@ def insert_data(df, property_table_name, renting_table_name):
         session.rollback()
         print(f"An error occurred during data insertion: {e}")
 
-
 # Main execution
 try:
     dfs = get_all_dfs()
-    create_all_tables(dfs)  # Create all tables before inserting data
-    for name, df in dfs.items():
-        insert_data(df, f'property_{name}', f'renting_{name}')
+    Base.metadata.create_all(engine) # Create all tables including MainTable
+    create_all_tables(dfs)  # This will also update the main table
+    # for name, df in dfs.items():
+    #     insert_data(df, f'property_{name}', f'renting_{name}')
 except Exception as e:
     print(f"An error occurred: {e}")
 
-# Reminder to check PostgreSQL logs if issues arise
-print("If any issues arise, please check the PostgreSQL server logs for more details.")
