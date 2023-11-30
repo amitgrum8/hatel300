@@ -1,6 +1,8 @@
 import pandas as pd
 from src import consts
 import os
+from src.dalteLakeMicorService.daltelLakeHandler import save_to_lake
+from kafka import KafkaProducer
 
 
 def round_data(df):
@@ -12,7 +14,6 @@ def round_data(df):
 
 def create_one_hot_encdoing(df):
     binary_columns = ['room_shared', 'room_private', 'host_is_superhost']
-    multi_category_columns = ['room_type']
     for col in binary_columns:
         df[col] = df[col].map({True: 1, False: 0})
     df['room_type'] = df['room_type'].map({'Private room': 1, 'Entire home/apt': 0})
@@ -65,6 +66,20 @@ def get_all_dfs():
     for file in files:
         if file != ".ipynb_checkpoints":
             df = pd.read_csv("airbnb_dataset\\" + file)
-            file=file.replace(".csv", "")
+            df['person_capacity'] = df['person_capacity'].astype(float)
+            save_to_lake(df, file)
+            file = file.replace(".csv", "")
             dfs[file] = pre_process(df)
     return dfs
+
+
+from kafka import KafkaProducer
+from kafka.admin import KafkaAdminClient, NewTopic
+import json
+
+
+def create_producer():
+    return KafkaProducer(
+        value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+
+
