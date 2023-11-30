@@ -158,8 +158,8 @@ try:
     dfs = start_pipline()
     Base.metadata.create_all(engine) # Create all tables including MainTable
     create_all_tables(dfs)  # This will also update the main table
-    # for name, df in dfs.items():
-    #     insert_data(df, f'property_{name}', f'renting_{name}')
+    for name, df in dfs.items():
+        insert_data(df, f'property_{name}', f'renting_{name}')
 except Exception as e:
     print(f"An error occurred: {e}")
 
