@@ -60,7 +60,7 @@ def pre_process(df):
     return df
 
 
-def get_all_dfs():
+def start_pipline():
     dfs = {}
     files = os.listdir(consts.path_to_dataset)
     for file in files:
@@ -72,14 +72,5 @@ def get_all_dfs():
             dfs[file] = pre_process(df)
     return dfs
 
-
-from kafka import KafkaProducer
-from kafka.admin import KafkaAdminClient, NewTopic
-import json
-
-
-def create_producer():
-    return KafkaProducer(
-        value_serializer=lambda v: json.dumps(v).encode('utf-8'))
 
 

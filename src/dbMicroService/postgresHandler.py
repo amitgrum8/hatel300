@@ -3,7 +3,7 @@ import psycopg2
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship, sessionmaker, declarative_base
 from src import consts
-from src.preProcessMicroService.preProcessHandler import get_all_dfs
+from src.preProcessMicroService.preProcessHandler import start_pipline
 from sqlalchemy.sql import text
 
 # Enable logging for SQL statements
@@ -155,7 +155,7 @@ def insert_data(df, property_table_name, renting_table_name):
 
 # Main execution
 try:
-    dfs = get_all_dfs()
+    dfs = start_pipline()
     Base.metadata.create_all(engine) # Create all tables including MainTable
     create_all_tables(dfs)  # This will also update the main table
     # for name, df in dfs.items():

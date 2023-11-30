@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="121d79e8-4739-4c00-a254-febd8ec9fa2c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dalteLakeMicorService/daltelLakeHandler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/serviceApi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/erd_de.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/docs/erd_de.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/~$erd.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/~$erd_de.drawio.bkp" beforeDir="false" afterPath="$PROJECT_DIR$/docs/~$erd_de.drawio.bkp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/~$erd_de.drawio.dtmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DbMicroService/postgresHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/postgresHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/consts.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preProcessMicroService/preProcessHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KafkaMircoService/kafkaHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/KafkaMircoService/kafkaHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dbMicroService/postgresHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/postgresHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preProcessMicroService/preProcessHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preProcessMicroService/preProcessHandler.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +140,9 @@
       <workItem from="1701177282302" duration="613000" />
       <workItem from="1701179984784" duration="3110000" />
       <workItem from="1701184193586" duration="12914000" />
-      <workItem from="1701261271839" duration="6406000" />
+      <workItem from="1701261271839" duration="6890000" />
+      <workItem from="1701332397014" duration="14000" />
+      <workItem from="1701332483021" duration="281000" />
     </task>
     <servers />
   </component>
