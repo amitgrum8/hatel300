@@ -30,5 +30,4 @@ class KafkaHandler:
     def consume_messages(self):
         if self.consumer:
             for message in self.consumer:
-                # Process message here
                 yield message

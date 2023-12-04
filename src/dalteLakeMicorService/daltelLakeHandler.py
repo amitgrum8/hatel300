@@ -6,7 +6,7 @@ from deltalake import DeltaTable
 from deltalake.writer import write_deltalake
 
 
-class DeltaLakeService:
+class DeltaLakeHandler:
     def __init__(self, kafka_handler: KafkaHandler):
         self.kafka_handler = kafka_handler
 
@@ -17,8 +17,8 @@ class DeltaLakeService:
         dt = DeltaTable(os.path.join(consts.path_to_datalake, file))
         return dt.to_pandas()
 
-    def consume_and_save(self, topic):
+    def consume_and_save(self, topic, table):
         self.kafka_handler.start_consumer(topic, group_id='delta_lake_group')
         for msg in self.kafka_handler.consume_messages():
-            df = pd.read_json(msg.value, orient='split')  # Make sure orientation matches the producer's
-            self.save_to_lake(df, "delta_table_name")  # Replace with appropriate table name
+            df = pd.read_json(msg.value, orient='split')
+            self.save_to_lake(df, table)  #
