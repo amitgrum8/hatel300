@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="121d79e8-4739-4c00-a254-febd8ec9fa2c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dataScienceMicroService/dsHandler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dbMicroService/PostgresInsertionService.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dbMicroService/PostgresQuerySerivce.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dbMicroService/models/dynamicBase.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dbMicroService/models/mainTable.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dbMicroService/models/propertyData.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dbMicroService/models/rentingData.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KafkaMircoService/kafkaHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/KafkaMircoService/kafkaHandler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/consts.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dalteLakeMicorService/daltelLakeHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dalteLakeMicorService/daltelLakeHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMicroService/postgresHandler.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preProcessMicroService/preProcessHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preProcessMicroService/preProcessHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dalteLakeMicorService/daltelLakeHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dalteLakeMicorService/daltelLake.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataScienceMicroService/dsHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataScienceMicroService/dsHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dbMicroService/PostgresInsertionService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/PostgresInsertion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dbMicroService/PostgresQuerySerivce.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/PostgresQuery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preProcessMicroService/preProcessHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preProcessMicroService/preProcessAndUploadToKafka.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/serviceApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/serviceApi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,10 +32,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/preProcessMicroService/preProcessHandler.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/preProcessMicroService/preProcessAndUploadToKafka.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/consts.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/.env" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/dbMicroService/PostgresInsertionService.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/dbMicroService/PostgresInsertion.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2Yo1lMHiBqgSslzyKUAN07OCnau" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -54,7 +58,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.PostgresQuerySerivce">
-    <configuration name="PostgresInsertionService (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="PostgresInsertion" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="first_de_project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -67,7 +71,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/dbMicroService/PostgresInsertionService.py" />
+      <option name="SCRIPT_NAME" value="C:\study\hatel\hatel300\first_de_project\src\dbMicroService\PostgresInsertion.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -76,7 +80,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="PostgresQuerySerivce" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="PostgresQuery" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="first_de_project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -89,7 +93,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/dbMicroService/PostgresQuerySerivce.py" />
+      <option name="SCRIPT_NAME" value="C:\study\hatel\hatel300\first_de_project\src\dbMicroService\PostgresQuery.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -142,7 +146,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="preProcessHandler (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="preProcessAndUploadToKafka" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="first_de_project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -155,7 +159,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/preProcessMicroService/preProcessHandler.py" />
+      <option name="SCRIPT_NAME" value="C:\study\hatel\hatel300\first_de_project\src\preProcessMicroService\preProcessAndUploadToKafka.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -165,18 +169,18 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.preProcessHandler (1)" />
       <item itemvalue="Python.kafkaHandler" />
       <item itemvalue="Python.PostgresQuerySerivce" />
       <item itemvalue="Python.dsHandler" />
       <item itemvalue="Python.PostgresInsertionService (1)" />
+      <item itemvalue="Python.preProcessAndUploadToKafka" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.PostgresQuerySerivce" />
         <item itemvalue="Python.dsHandler" />
         <item itemvalue="Python.PostgresInsertionService (1)" />
-        <item itemvalue="Python.preProcessHandler (1)" />
+        <item itemvalue="Python.preProcessAndUploadToKafka" />
         <item itemvalue="Python.kafkaHandler" />
       </list>
     </recent_temporary>
@@ -194,7 +198,7 @@
       <workItem from="1701184193586" duration="12914000" />
       <workItem from="1701261271839" duration="6890000" />
       <workItem from="1701332397014" duration="14000" />
-      <workItem from="1701332483021" duration="39394000" />
+      <workItem from="1701332483021" duration="47718000" />
     </task>
     <servers />
   </component>

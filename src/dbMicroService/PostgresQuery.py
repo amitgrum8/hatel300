@@ -27,7 +27,7 @@ class PostgresQueryService:
             logger.error(f"Error loading data from table {table_name}: {e}")
             return None
 
-    def produce_all_tables_to_kafka(self, topic_name='ds_data_one'):
+    def produce_all_tables_to_kafka(self, topic_name=consts.DS_DATA_TOPIC):
         inspector = inspect(self.engine)
         table_names = inspector.get_table_names()
         for table_name in table_names:

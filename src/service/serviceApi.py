@@ -1,8 +1,7 @@
 from flask import Flask, jsonify, request
-
 from src.KafkaMircoService.kafkaHandler import create_topic
-from src.preProcessMicroService.preProcessHandler import start_pipline
-from src.dalteLakeMicorService.daltelLakeHandler import read_from_lake
+from src.preProcessMicroService.preProcessAndUploadToKafka import start_pipline
+from src.dalteLakeMicorService.daltelLake import read_from_lake
 
 app = Flask(__name__)
 
@@ -18,6 +17,7 @@ def get_df():
     file_name = data.get('nameOfFile')
     df = read_from_lake(file_name)
     result = df.to_json(orient='records')
+
     return jsonify(result)
 
 
@@ -27,7 +27,9 @@ def get_df():
     topic_name = data.get('topic_name')
     res = create_topic(topic_name)
     result = jsonify(res)
+
     return jsonify(result)
 
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)

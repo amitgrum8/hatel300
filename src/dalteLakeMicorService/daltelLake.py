@@ -11,10 +11,10 @@ class DeltaLakeHandler:
         self.kafka_handler = kafka_handler
 
     def save_to_lake(self, data, table_name):
-        write_deltalake(os.path.join(consts.path_to_datalake, table_name), data, mode="overwrite")
+        write_deltalake(os.path.join(consts.PATH_TO_DATALAKE, table_name), data, mode="overwrite")
 
     def read_from_lake(self, file):
-        dt = DeltaTable(os.path.join(consts.path_to_datalake, file))
+        dt = DeltaTable(os.path.join(consts.PATH_TO_DATALAKE, file))
         return dt.to_pandas()
 
     def consume_and_save(self, topic, table):

@@ -1,18 +1,28 @@
+import json
 from kafka import KafkaProducer, KafkaConsumer
 from kafka.admin import KafkaAdminClient, NewTopic
-import json
+
 
 class KafkaHandler:
+    _producer = None  # Class attribute for the singleton producer
+
     def __init__(self, servers="localhost:9092"):
-        self.producer = KafkaProducer(
-            bootstrap_servers=servers,
-            value_serializer=lambda v: json.dumps(v).encode('utf-8'))
         self.consumer = None
         self.servers = servers
+        self.start_producer()
+
+    @classmethod
+    def start_producer(cls):
+        if cls._producer is None:
+            cls._producer = KafkaProducer(
+                bootstrap_servers=cls.servers,
+                value_serializer=lambda v: json.dumps(v).encode('utf-8'))
 
     def send_message(self, topic, message):
-        self.producer.send(topic, message)
-        self.producer.flush()
+        if self._producer is None:
+            raise Exception("Producer not initialized. Call start_producer first.")
+        self._producer.send(topic, message)
+        self._producer.flush()
 
     def create_topic(self, topic_name, num_partitions=1, replication_factor=1):
         admin_client = KafkaAdminClient(bootstrap_servers=self.servers, client_id='test')
