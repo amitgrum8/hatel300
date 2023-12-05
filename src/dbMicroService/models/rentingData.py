@@ -6,7 +6,6 @@ def create_renting_data_class(table_name, property_table_name):
         __tablename__ = table_name
         __table_args__ = {'extend_existing': True}
         property_id = Column(Integer, ForeignKey(f'{property_table_name}.id'))
-        # Other column definitions
         realSum = Column(Float)
         biz = Column(String)
         host_is_superhost = Column(String)

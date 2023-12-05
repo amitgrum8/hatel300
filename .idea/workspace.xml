@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="121d79e8-4739-4c00-a254-febd8ec9fa2c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dbMicroService/models/dynamicBase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dbMicroService/models/mainTable.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dbMicroService/models/propertyData.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dbMicroService/models/rentingData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KafkaMircoService/kafkaHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/KafkaMircoService/kafkaHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/consts.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dalteLakeMicorService/daltelLakeHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dalteLakeMicorService/daltelLake.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataScienceMicroService/dsHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataScienceMicroService/dsHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMicroService/PostgresInsertionService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/PostgresInsertion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMicroService/PostgresQuerySerivce.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/PostgresQuery.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preProcessMicroService/preProcessHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preProcessMicroService/preProcessAndUploadToKafka.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/~$erd.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dbMicroService/PostgresInsertion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/PostgresInsertion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dbMicroService/PostgresQuery.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/PostgresQuery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dbMicroService/models/propertyData.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/models/propertyData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dbMicroService/models/rentingData.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/models/rentingData.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/serviceApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/serviceApi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -198,7 +193,7 @@
       <workItem from="1701184193586" duration="12914000" />
       <workItem from="1701261271839" duration="6890000" />
       <workItem from="1701332397014" duration="14000" />
-      <workItem from="1701332483021" duration="47718000" />
+      <workItem from="1701332483021" duration="51400000" />
     </task>
     <servers />
   </component>

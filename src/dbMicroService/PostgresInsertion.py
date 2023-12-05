@@ -10,7 +10,6 @@ from src.KafkaMircoService.kafkaHandler import KafkaHandler
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy import create_engine
 
-# Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

@@ -5,7 +5,6 @@ def create_property_data_class(table_name):
     class PropertyData(DynamicBase):
         __tablename__ = table_name
         __table_args__ = {'extend_existing': True}
-        # Other column definitions
         rest_index_norm = Column(Float)
         attr_index_norm = Column(Float)
         room_type = Column(String)

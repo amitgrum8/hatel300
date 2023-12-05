@@ -34,14 +34,12 @@ class PostgresQueryService:
             df = self.load_table_as_df(table_name)
             if df is not None:
                 try:
-                    # Create a JSON object with both the table name and the data
                     json_data = {
                         'table_name': table_name,
                         'data': df.to_json(orient='records', date_format='iso')
                     }
                     json_payload = json.dumps(json_data)  # Convert the object to a JSON string
 
-                    # Send the JSON payload to Kafka
                     self.kafka_handler.send_message(topic_name, json_payload)
                     logger.info(f"Data from table {table_name} sent to Kafka topic {topic_name}")
                 except Exception as e:
@@ -50,7 +48,6 @@ class PostgresQueryService:
 
 
 
-# Usage example
-kafka_handler = KafkaHandler()  # Ensure KafkaHandler is implemented properly
+kafka_handler = KafkaHandler()
 postgres_service = PostgresQueryService(kafka_handler, consts.db_config)
 postgres_service.produce_all_tables_to_kafka()

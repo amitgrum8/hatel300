@@ -1,35 +1,35 @@
 from flask import Flask, jsonify, request
-from src.KafkaMircoService.kafkaHandler import create_topic
-from src.preProcessMicroService.preProcessAndUploadToKafka import start_pipline
-from src.dalteLakeMicorService.daltelLake import read_from_lake
+from flask.views import MethodView
+from src.KafkaMircoService.kafkaHandler import KafkaHandler
 
 app = Flask(__name__)
 
 
-@app.route('/start', methods=['POST'])
-def get_all_dfs_api():
-    start_pipline()
+class InitAPI(MethodView):
+    def __init__(self):
+        self.kafkaHandler = KafkaHandler()
 
 
-@app.route('/get_df', methods=['POST'])
-def get_df():
-    data = request.get_json()
-    file_name = data.get('nameOfFile')
-    df = read_from_lake(file_name)
-    result = df.to_json(orient='records')
+class GetDFAPI(MethodView):
+    def post(self):
+        data = request.get_json()
+        file_name = data.get('nameOfFile')
+        df = read_from_lake(file_name)
+        result = df.to_json(orient='records')
+        return jsonify(result), 200
 
-    return jsonify(result)
+
+class CreateTopicAPI(MethodView):
+    def post(self):
+        data = request.get_json()
+        topic_name = data.get('topic_name')
+        res = create_topic(topic_name)
+        return jsonify(res), 200
 
 
-@app.route('/create_topic', methods=['POST'])
-def get_df():
-    data = request.get_json()
-    topic_name = data.get('topic_name')
-    res = create_topic(topic_name)
-    result = jsonify(res)
-
-    return jsonify(result)
-
+app.add_url_rule('/init', view_func=InitAPI.as_view('init_api'))
+app.add_url_rule('/', view_func=GetDFAPI.as_view('get_df_api'))
+app.add_url_rule('/create_topic', view_func=CreateTopicAPI.as_view('create_topic_api'))
 
 if __name__ == '__main__':
     app.run(debug=True)
