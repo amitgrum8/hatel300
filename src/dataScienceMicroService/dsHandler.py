@@ -28,7 +28,7 @@ class LinearRegressionModel(Base):
 
 
 class DsHandler:
-    def __init__(self, topic="ds_data_one", bootstrap_servers='localhost:9092'):
+    def __init__(self, topic=consts.DS_DATA_TOPIC, bootstrap_servers='localhost:9092'):
         self.topic = topic
         self.consumer = KafkaConsumer(
             self.topic,
