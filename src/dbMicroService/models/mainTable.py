@@ -1,7 +1,6 @@
-from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, Float, String
+from src.dbMicroService.models.base import Base
 
-Base = declarative_base()
 
 
 class MainTable(Base):

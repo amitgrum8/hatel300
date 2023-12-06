@@ -4,18 +4,18 @@ from kafka.admin import KafkaAdminClient, NewTopic
 
 
 class KafkaHandler:
-    _producer = None  # Class attribute for the singleton producer
+    _producer = None
 
     def __init__(self, servers="localhost:9092"):
         self.consumer = None
         self.servers = servers
-        self.start_producer()
+        self.start_producer(servers)
 
     @classmethod
-    def start_producer(cls):
+    def start_producer(cls, servers):
         if cls._producer is None:
             cls._producer = KafkaProducer(
-                bootstrap_servers=cls.servers,
+                bootstrap_servers=servers,
                 value_serializer=lambda v: json.dumps(v).encode('utf-8'))
 
     def send_message(self, topic, message):

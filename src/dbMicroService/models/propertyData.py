@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, Float, String
-from dynamicBase import DynamicBase
+from src.dbMicroService.models.dynamicBase import DynamicBase
 
 def create_property_data_class(table_name):
     class PropertyData(DynamicBase):

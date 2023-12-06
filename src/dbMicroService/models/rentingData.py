@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, Float, String, ForeignKey
-from dynamicBase import DynamicBase
+from src.dbMicroService.models.dynamicBase import DynamicBase
 
 def create_renting_data_class(table_name, property_table_name):
     class RentingData(DynamicBase):

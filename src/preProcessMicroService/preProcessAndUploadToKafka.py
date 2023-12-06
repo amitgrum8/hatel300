@@ -11,18 +11,18 @@ class PreProcessAndUploadToKafka:
             bootstrap_servers=kafka_server,
             value_serializer=lambda v: json.dumps(v).encode('utf-8'))
         self.kafka_topic = kafka_topic
-        self.curr_self.curr_df = None
+        self.curr_df = None
 
     def round_data(self):
         columns_name = ['dist', 'metro_dist', 'realSum', 'attr_index_norm', 'rest_index_norm']
         for col in columns_name:
-            self.curr_self.curr_df[col] = self.curr_self.curr_df[col].round(5)
+            self.curr_df[col] = self.curr_df[col].round(5)
 
     def create_one_hot_encdoing(self):
         binary_columns = ['room_shared', 'room_private', 'host_is_superhost']
         for col in binary_columns:
-            self.curr_self.curr_df[col] = self.curr_self.curr_df[col].map({True: 1, False: 0})
-        self.curr_self.curr_df['room_type'] = self.curr_self.curr_df['room_type'].map(
+            self.curr_df[col] = self.curr_df[col].map({True: 1, False: 0})
+        self.curr_df['room_type'] = self.curr_df['room_type'].map(
             {'Private room': 1, 'Entire home/apt': 0})
 
     def create_new_table_with_id(self):
@@ -59,10 +59,11 @@ class PreProcessAndUploadToKafka:
         files = os.listdir(consts.PATH_TO_DATASET)
         for file_name in files:
             self.curr_df = pd.read_csv(os.path.join(consts.PATH_TO_DATASET, file_name))
+            self.kafka_producer.send(os.getenv("DALTE_LAKE_ADD"), json.dumps(self.curr_df.to_dict(orient='split')))
             self.pre_process()
             file_name = file_name.replace(".csv", "")
             json_structure = {
-                "self.curr_df_data": self.curr_df.to_dict(orient="split"),  # DataFrame data
+                "df_data": self.curr_df.to_dict(orient="split"),  # DataFrame data
                 "property_table_name": f"property_{file_name}",
                 "renting_table_name": f"renting_{file_name}"
             }

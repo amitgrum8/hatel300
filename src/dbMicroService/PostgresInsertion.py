@@ -3,12 +3,13 @@ import pandas as pd
 from src import consts
 from sqlalchemy.sql import text
 from sqlalchemy.exc import SQLAlchemyError
-from models.propertyData import create_property_data_class
-from models.rentingData import create_renting_data_class
-from models.mainTable import MainTable, Base as MainBase
+from src.dbMicroService.models.propertyData import create_property_data_class
+from src.dbMicroService.models.rentingData import create_renting_data_class
+from src.dbMicroService.models.mainTable import MainTable, Base as MainBase
 from src.KafkaMircoService.kafkaHandler import KafkaHandler
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy import create_engine
+import ast
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -34,14 +35,11 @@ class PostgresInsertionService:
         else:
             return None
 
-    def update_main_table(self, table_name):
+    def update_main_table(self, table_name, session):
         with self.engine.connect() as conn:
             record_count_query = text(f"SELECT COUNT(*) FROM {table_name}")
             record_count = conn.execute(record_count_query).scalar()
             average_price = self.compute_average_price(table_name)
-
-            Session = sessionmaker(bind=self.engine)
-            session = Session()
 
             existing_record = session.query(MainTable).filter_by(table_name=table_name).first()
             if existing_record:
@@ -61,33 +59,29 @@ class PostgresInsertionService:
         RentingClass = create_renting_data_class(renting_table_name, property_table_name)
         self.create_relationships(PropertyClass, RentingClass)
         MainBase.metadata.create_all(self.engine)
-        self.update_main_table(property_table_name)
-        self.update_main_table(renting_table_name)
 
     def insert_data(self, df, property_table_name, renting_table_name):
         PropertyClass = create_property_data_class(property_table_name)
         RentingClass = create_renting_data_class(renting_table_name, property_table_name)
         self.create_relationships(PropertyClass, RentingClass)
+        property_columns = ast.literal_eval(consts.PROPERTY_COLUMNS)
+        renting_columns = ast.literal_eval(consts.RENTING_COLUMNS)
+        df_property = df[property_columns]
+        df_renting = df[renting_columns]
 
-        df_property = df[consts.PROPERTY_COLUMNS]
-        df_renting = df[consts.RENTING_COLUMNS]
-
-        Session = sessionmaker(bind=self.engine)
-        session = Session()
-
-        try:
-            for index, row in df_property.iterrows():
-                session.add(PropertyClass(**row.to_dict()))
-            for index, row in df_renting.iterrows():
-                session.add(RentingClass(**row.to_dict(), property_id=row['id']))
-            session.commit()
-        except SQLAlchemyError as e:
-            session.rollback()
-            logger.error(f"An error occurred during data insertion: {e}")
+        with sessionmaker(bind=self.engine)() as session:
+            try:
+                for index, row in df_property.iterrows():
+                    session.add(PropertyClass(**row.to_dict()))
+                for index, row in df_renting.iterrows():
+                    session.add(RentingClass(**row.to_dict(), property_id=row['id']))
+                session.commit()
+            except SQLAlchemyError as e:
+                session.rollback()
+                logger.error(f"An error occurred during data insertion: {e}")
+            self.update_main_table(property_table_name, session)
+            self.update_main_table(renting_table_name, session)
             session.close()
-
-        self.update_main_table(property_table_name)
-        self.update_main_table(renting_table_name)
 
     def consume_and_insert(self, topic):
         logger.info(f"Starting to consume from Kafka topic: {topic}")
