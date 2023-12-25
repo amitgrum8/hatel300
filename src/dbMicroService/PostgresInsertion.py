@@ -107,16 +107,3 @@ class PostgresInsertionService:
             self.insert_data(df, property_table_name, renting_table_name)
             logger.info(f"Data inserted into {property_table_name} and {renting_table_name}")
 
-
-# Configuration for PostgreSQL
-db_config = {
-    "host": consts.POSTGRES_SERVER,
-    "port": consts.POSTGRES_PORT,
-    "database": consts.DATABASE_NAME,
-    "user": consts.POSTGRES_USERNAME,
-    "password": consts.POSTGRES_PASSWORD
-}
-
-kafka_handler = KafkaHandler()  # Ensure KafkaHandler is implemented properly
-postgres_service = PostgresInsertionService(kafka_handler, db_config)
-postgres_service.consume_and_insert("processed_data_one")

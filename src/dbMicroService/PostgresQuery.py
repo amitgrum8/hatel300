@@ -46,8 +46,3 @@ class PostgresQueryService:
                     logger.error(f"Error sending data to Kafka for table {table_name}: {e}")
 
 
-
-
-kafka_handler = KafkaHandler()
-postgres_service = PostgresQueryService(kafka_handler, consts.db_config)
-postgres_service.produce_all_tables_to_kafka()

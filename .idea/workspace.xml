@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="121d79e8-4739-4c00-a254-febd8ec9fa2c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dbMicroService/models/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/erd.docx" beforeDir="false" afterPath="$PROJECT_DIR$/docs/erd.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KafkaMircoService/kafkaHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/KafkaMircoService/kafkaHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dalteLakeMicorService/daltelLake.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dalteLakeMicorService/daltelLake.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dbMicroService/PostgresInsertion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/PostgresInsertion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMicroService/models/dynamicBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/models/dynamicBase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMicroService/models/mainTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/models/mainTable.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMicroService/models/propertyData.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/models/propertyData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbMicroService/models/rentingData.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/models/rentingData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preProcessMicroService/catboost_info/catboost_training.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preProcessMicroService/catboost_info/learn/events.out.tfevents" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preProcessMicroService/catboost_info/learn_error.tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preProcessMicroService/catboost_info/time_left.tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preProcessMicroService/preProcessAndUploadToKafka.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preProcessMicroService/preProcessAndUploadToKafka.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dbMicroService/PostgresQuery.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbMicroService/PostgresQuery.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/serviceApi.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/serviceApi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +39,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../gruGuiter/Amit-grumet" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -172,18 +161,16 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.PostgresQuerySerivce" />
+      <item itemvalue="Python.PostgresInsertion" />
+      <item itemvalue="Python.PostgresQuery" />
       <item itemvalue="Python.dsHandler" />
-      <item itemvalue="Python.PostgresInsertionService (1)" />
       <item itemvalue="Python.preProcessAndUploadToKafka" />
       <item itemvalue="Python.serviceApi" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.serviceApi" />
-        <item itemvalue="Python.PostgresQuerySerivce" />
         <item itemvalue="Python.dsHandler" />
-        <item itemvalue="Python.PostgresInsertionService (1)" />
         <item itemvalue="Python.preProcessAndUploadToKafka" />
       </list>
     </recent_temporary>
@@ -201,7 +188,8 @@
       <workItem from="1701184193586" duration="12914000" />
       <workItem from="1701261271839" duration="6890000" />
       <workItem from="1701332397014" duration="14000" />
-      <workItem from="1701332483021" duration="57200000" />
+      <workItem from="1701332483021" duration="60806000" />
+      <workItem from="1701868819191" duration="3809000" />
     </task>
     <servers />
   </component>
@@ -224,14 +212,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/dbMicroService/PostgresInsertion.py</url>
-          <line>105</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/dbMicroService/PostgresInsertion.py</url>
-          <line>58</line>
-          <option name="timeStamp" value="45" />
+          <url>file://$PROJECT_DIR$/src/service/serviceApi.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -241,7 +224,7 @@
     <SUITE FILE_PATH="coverage/first_de_project$PostgresInsertionService__1_.coverage" NAME="PostgresInsertionService (1) Coverage Results" MODIFIED="1701678344175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/dbMicroService" />
     <SUITE FILE_PATH="coverage/first_de_project$kafkaHandler.coverage" NAME="kafkaHandler Coverage Results" MODIFIED="1701612136748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/KafkaMircoService" />
     <SUITE FILE_PATH="coverage/first_de_project$postgresHandler__1_.coverage" NAME="postgresHandler (1) Coverage Results" MODIFIED="1701595076329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/dbMicroService" />
-    <SUITE FILE_PATH="coverage/first_de_project$serviceApi.coverage" NAME="serviceApi Coverage Results" MODIFIED="1701854344293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/first_de_project$serviceApi.coverage" NAME="serviceApi Coverage Results" MODIFIED="1701942070038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/first_de_project$postgresHandler.coverage" NAME="postgresHandler Coverage Results" MODIFIED="1701260575993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/first_de_project$PostgresQuerySerivce.coverage" NAME="PostgresQuerySerivce Coverage Results" MODIFIED="1701688346969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/dbMicroService" />
     <SUITE FILE_PATH="coverage/first_de_project$main.coverage" NAME="main Coverage Results" MODIFIED="1701265407241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />

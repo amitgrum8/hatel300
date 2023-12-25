@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request
 from flask.views import MethodView
+
+import src.consts
 from src.KafkaMircoService.kafkaHandler import KafkaHandler
 from src.preProcessMicroService.preProcessAndUploadToKafka import PreProcessAndUploadToKafka
 from src.dbMicroService.PostgresInsertion import PostgresInsertionService
@@ -8,11 +10,10 @@ import threading
 
 app = Flask(__name__)
 kafka_handler = KafkaHandler()
-
 kafka_server = os.getenv("KAFKA_SERVER", "localhost:9092")
 kafka_topic = os.getenv("KAFKA_TOPIC", "processed_data_one")
 preprocessor = PreProcessAndUploadToKafka(kafka_server, kafka_topic)
-postgres_service = PostgresInsertionService(kafka_handler)
+postgres_service = PostgresInsertionService(kafka_handler,src.consts.db_config)
 
 
 class StartPipelineAPI(MethodView):
